@@ -1,0 +1,1 @@
+python "D:\coding\PROJECTS\Python\JARVIS\OLD(2022) using chat-gpt api\JarvisAI\JARVIS.py"
