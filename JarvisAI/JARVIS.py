@@ -20,7 +20,7 @@ chatStr = ""
 def chat(query):
     global chatStr
     print(chatStr)
-    chatStr += f"Yash: {query}\nJarvis: "
+    chatStr += f"User: {query}\nJarvis: "
     response = openai.ChatCompletion.create(
         model="gpt-3.5-turbo",
         messages=[
