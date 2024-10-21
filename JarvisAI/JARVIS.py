@@ -1,6 +1,5 @@
 import sys
 from functions import *
- # replace apikey with your actuial api key 
 
 if __name__ == '__main__':
     print('Welcome to Jarvis A.I')
@@ -18,18 +17,14 @@ if __name__ == '__main__':
 
     while True:
         fst = False
-        print("Listening...")
         query = takeCommand()
         if query.strip() == "":
                         continue
         elif "hey jarvis" in query.lower() or "jarvis" in query.lower():
             while True:
-                print("Listeniing...")
                 if fst:
                     query = takeCommand()
-
                 fst = True
-
                 query = query.lower().replace("hey jarvis", "").replace("jarvis", "").strip()
                 sites = [["youtube", "https://www.youtube.com"], ["wikipedia", "https://www.wikipedia.com"], ["google", "https://www.google.com"]]
                 for site in sites:
@@ -158,9 +153,9 @@ if __name__ == '__main__':
                 elif query.strip() == "":
                         continue
 
-                else:
-                    print("Chatting...")
-                    chat(query)
+                # else:
+                #     print("Chatting...")
+                #     chat(query)
 
         elif "quit" in query.lower() or "exit" in query.lower() or "go offline" in query.lower() or "bye jarvis" in query.lower() or "goodbye" in query.lower() or "jarvis bye" in query.lower():
             farewell = goodbye_based_on_time() 

@@ -12,7 +12,7 @@ from googlesearch import search
 import psutil 
 import ctypes
 from api_key import apikey  # remove this 
-openai.api_key = apikey
+openai.api_key = apikey  # replace apikey with your actuial api key 
 
 chatStr = ""
 
