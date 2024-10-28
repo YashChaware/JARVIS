@@ -62,13 +62,26 @@ if __name__ == '__main__':
                     say("Going back to the previous track...")
                     previous_track()
 
+                elif"maximize the volume" in query or "max the volume" in query:
+                        set_volume(100)  # Set system volume to 100%
+                        say("Maximizing the volume.")
+
                 elif "set volume" in query:
-                    try:
-                        level = int(query.split("set volume to", 1)[1].strip())
-                        set_volume(level)
-                        say(f"Setting volume to {level} percent.")
-                    except ValueError:
-                        say("I couldn't understand the volume level. Please specify a number between 0 and 100.")
+                        if "max" in query:
+                             set_volume(100)  # Set system volume to 100%
+                        else:
+                            # Improve number extraction by finding digits in the query
+                            level_str = ''.join(filter(str.isdigit, query))
+                        
+                            if level_str:  # Check if a number was found
+                                level = int(level_str)
+                                if 0 <= level <= 100:
+                                    set_volume(level)
+                                    say(f"Setting volume to {level} percent.")
+                                else:
+                                    say("Please specify a volume level between 0 and 100.")
+                            else:
+                                say("I couldn't understand the volume level. Please specify a number between 0 and 100.")
 
                 elif "increase volume" in query:
                     volume_up()

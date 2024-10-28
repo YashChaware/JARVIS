@@ -11,6 +11,9 @@ import sys
 from googlesearch import search
 import psutil 
 import ctypes
+from pycaw.pycaw import AudioUtilities, IAudioEndpointVolume
+from comtypes import CLSCTX_ALL
+from ctypes import cast, POINTER
 from api_key import apikey  # remove this 
 openai.api_key = apikey  # replace apikey with your actuial api key 
 
@@ -158,16 +161,19 @@ def mute_volume():
 
 def set_volume(level):
     """
-    Sets the system volume to a specified level (0 to 100) directly on Windows.
+    Sets the system volume to a specified level (0 to 100) directly on Windows using pycaw.
     """
     if not 0 <= level <= 100:
         raise ValueError("Volume level must be between 0 and 100.")
-    
-    # Calculate the volume level in the range required by the API
-    level = level / 100.0  # Convert to a fraction between 0.0 and 1.0
-    
-    # Use ctypes to interact with the Windows audio API
-    ctypes.windll.winmm.waveOutSetVolume(0, int(level * 0xFFFF))  # 0xFFFF is the maximum volume level
+
+    # Get the default audio device (speakers/headphones)
+    devices = AudioUtilities.GetSpeakers()
+    interface = devices.Activate(IAudioEndpointVolume._iid_, CLSCTX_ALL, None)
+    volume = cast(interface, POINTER(IAudioEndpointVolume))
+
+    # Convert level to the range 0.0 to 1.0 for system volume control
+    volume_level = level / 100.0
+    volume.SetMasterVolumeLevelScalar(volume_level, None)
 
 
 
