@@ -80,10 +80,10 @@ def takeCommand():
             print(f"User said: {query}")
             return query.lower()  # Return the query in lowercase for easier matching
         except sr.UnknownValueError:
-            print("Sorry, I didn't catch that. Could you repeat?")
+            say("Sorry, I didn't catch that. Could you repeat?")
             return ""  # Return an empty string when speech is not recognized
         except sr.RequestError:
-            print("Could not request results from Google Speech Recognition service.")
+            say("Could not request results from Google Speech Recognition service.")
             return ""  # Return an empty string on API failure
         except Exception as e:
             print(f"Error: {e}")
@@ -184,7 +184,7 @@ def get_current_date_time():
     return now, date_str, time_str_24hr, time_str_12hr
 
 def greet_based_on_time():
-    now, _, _, _ = get_current_date_time()
+    now, _, _, _ = get_current_date_time()  # Only unpacking 'now'
     hour = now.hour
     if 5 <= hour < 12:
         return "Good morning"
@@ -196,7 +196,7 @@ def greet_based_on_time():
         return "Good night"
 
 def goodbye_based_on_time():
-    now, _, _, _ = get_current_date_time()
+    now, _, _, _ = get_current_date_time()  # Only unpacking 'now'
     hour = now.hour
     if 5 <= hour < 12:
         return "Have a nice day"
@@ -205,7 +205,7 @@ def goodbye_based_on_time():
     elif 17 <= hour < 21:
         return "Have a nice evening"
     else:
-        return "Good night have a nice sleep"
+        return "Good night, have a nice sleep"
 
 def get_battery_percentage():
     battery = psutil.sensors_battery()
