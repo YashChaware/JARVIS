@@ -5,6 +5,7 @@ import os
 import datetime
 import subprocess
 import pyautogui
+import webbrowser
 import time
 from googlesearch import search
 import psutil 

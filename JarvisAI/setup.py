@@ -15,21 +15,25 @@ def install_requirements():
 
 # Function to create api_key.py with the user's API key
 def create_api_key_file():
-    print("If you don't have an OpenAI API key, please generate one here:")
-    api_key_url = "https://platform.openai.com/account/api-keys"
-    print(f"Ctrl+Click to open: {api_key_url}")
+    print("Please enter your OpenAI API key, or press Enter if you don't have one:")
+
+    api_key = input().strip()  # Get the API key from the user or empty string if they press Enter
     
-    # Automatically open the API key generation page in the browser
-    webbrowser.open(api_key_url)
-    
-    # Delay to allow the user time to visit the webpage
-    print("Waiting for you to generate your API key. Please paste it below when ready.")
-    time.sleep(5)  # This gives the user a few seconds to focus on the web page
-    
-    # Ask the user to input their API key after they generate it
-    print("Please enter your OpenAI API key:")
-    api_key = input()  # Get the API key from the user
-    
+    if not api_key:
+        print("You don't have an API key. Please generate one at the following link:")
+        api_key_url = "https://platform.openai.com/account/api-keys"
+        print(f"Ctrl+Click to open: {api_key_url}")
+        
+        # Automatically open the API key generation page in the browser
+        webbrowser.open(api_key_url)
+        
+        # Wait for the user to generate the API key
+        input("Press Enter after you generate your API key and are ready to paste it here.")
+        
+        # Prompt the user to input the newly generated API key
+        print("Please enter your OpenAI API key:")
+        api_key = input().strip()
+
     # Create or overwrite the api_key.py file with the provided API key
     with open("api_key.py", "w") as f:
         f.write(f'apikey = "{api_key}"\n')
