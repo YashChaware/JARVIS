@@ -2,10 +2,9 @@ openai               # For OpenAI GPT-3 API integration
 vosk                 # For offline speech recognition
 PyAudio              # For audio input/output (used with Vosk and speech_recognition)
 pyttsx3              # For text-to-speech (TTS) functionality
-speech_recognition   # For speech recognition using online services
+speechrecognition   # For speech recognition using online services
 keyboard             # For controlling keyboard inputs (e.g., media control)
 psutil               # For process and system utilities (e.g., managing running apps)
 pyautogui            # For automating mouse and keyboard controls (e.g., closing apps or browser tabs)
-tkinter              # For graphical interface (already included in Python standard library)
 requests             # For making HTTP requests (might be useful for additional API calls)
 python-dotenv        # For loading environment variables from a `.env` file
