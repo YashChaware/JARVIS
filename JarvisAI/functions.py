@@ -1,16 +1,13 @@
 import openai
 import pyttsx3
 import speech_recognition as sr
-import webbrowser
 import os
 import datetime
 import subprocess
 import pyautogui
 import time
-import sys
 from googlesearch import search
 import psutil 
-import ctypes
 from pycaw.pycaw import AudioUtilities, IAudioEndpointVolume
 from comtypes import CLSCTX_ALL
 from ctypes import cast, POINTER
