@@ -22,6 +22,7 @@ if __name__ == '__main__':
         if query.strip() == "":
                         continue
         elif "hey jarvis" in query.lower() or "jarvis" in query.lower():
+            say("hearing sir")
             while True:
                 if fst:
                     query = takeCommand()
